@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char,int>m;
+        int len=0,j=0;
+        for(int i=0;i<s.length();i++){
+            if(m.find(s[i])!=m.end()){
+                j=max(m[s[i]]+1,j); // don't forget to use max as the  j pointer always moves foreward not backward . for the case "abba" if we don't use max the j pointer moves backward and violates the rule 
+            }
+                m[s[i]]=i;
+                len=max(len,i-j+1);
+            }
+            return len;
+        
+    }
+};
